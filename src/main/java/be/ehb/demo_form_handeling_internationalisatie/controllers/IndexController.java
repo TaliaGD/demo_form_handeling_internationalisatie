@@ -32,7 +32,7 @@ public class IndexController {
     }
     //opslaan snack
     @RequestMapping(value = {"","/","/index"}, method = RequestMethod.POST)
-    public String saveSnack(@Valid Snack nSnack, BindingResult bindingResult){
+    public String saveSnack(@ModelAttribute("nSnack")@Valid Snack nSnack, BindingResult bindingResult){
         if(bindingResult.hasErrors())
             return "index";
         dao.save(nSnack);
