@@ -12,7 +12,7 @@
                 <th>Name</th>
                 <th>Price</th>
             </tr>
-        
+
         </thead>
         <tbody>
             <tr th:each="snack: ${alleSnacks}">
@@ -23,6 +23,23 @@
         </tbody>
 
     </table>
+    <div>
+        <!--  ~=tilde=localhost=starten van het begin van de index-->
+        <!--  th= genereerd er het html elementje van-->
+        <form th:action="@{~/index}" method="post" th:object="${nSnack}">
 
+            <label for="name">Name</label>
+            <input type="text" th:field="*{name}" id="name">
+            <!--  span=blijft inline we willen deze enkel laten zie indie er fouten zijn-->
+            <!--  fields zit standaard in time leaf -->
+            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+
+            <label for="price">Price</label>
+            <input type="text" th:field="*{price}" id= "price">
+            <span th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></span>
+
+            <input type="submit">
+        </form>
+    </div>
 </body>
 </html>

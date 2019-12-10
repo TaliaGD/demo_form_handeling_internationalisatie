@@ -16,7 +16,7 @@ public class Snack {
     private int id;
     @NotBlank
     public String name;
-    @NotBlank
+    @NotNull
     @DecimalMin(value = "0.50")
     public BigDecimal price;
 
