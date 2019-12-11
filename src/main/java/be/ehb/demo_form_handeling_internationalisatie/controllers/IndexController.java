@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -19,15 +20,18 @@ public class IndexController {
 
     @ModelAttribute(value = "alleSnacks")
     public Iterable<Snack> getAllSnacks(){
+
         return dao.findAll();
     }
     // model atribute voor één snack
     @ModelAttribute(value = "nSnack")
     public Snack snaclToSave(){
+
         return new Snack();
     }
     @RequestMapping(value = {"","/","/index"}, method = RequestMethod.GET)
     public String showIndex(ModelMap map){
+
         return "index";
     }
     //opslaan snack
@@ -39,6 +43,12 @@ public class IndexController {
         //redirect is openen met een get
         return "redirect:/index";
 
-
     }
+    //aanmaak delete knop
+@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+    public String deleteSnack(@PathVariable(value="id")int id){
+        dao.deleteById(id);
+        return  "redirect:/index";
+}
+
 }

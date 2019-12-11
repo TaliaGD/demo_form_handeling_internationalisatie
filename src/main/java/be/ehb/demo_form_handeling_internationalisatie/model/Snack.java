@@ -15,6 +15,7 @@ public class Snack {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @NotBlank
+    @NotNull
     public String name;
     @NotNull
     @DecimalMin(value = "0.50")

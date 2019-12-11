@@ -1,0 +1,6 @@
+/*1.1em =10 percent groter (opmerking enkel buiten de haakjes)*/
+.error{
+    color: #c62221;
+    font-size: 1.1em;
+    font-weight: bold;
+}
